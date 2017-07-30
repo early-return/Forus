@@ -138,4 +138,28 @@ CREATE TABLE IF NOT EXISTS `forus`.`events` (
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;
 
+-- 收藏表
+DROP TABLE  IF EXISTS `forus`.`stars`;
+CREATE TABLE IF NOT EXISTS `forus`.`stars` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` INT UNSIGNED NOT NULL,
+  `post_id` INT UNSIGNED NOT NULL,
+  `star_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  INDEX `fk_stars_users_idx` (`user_id` ASC),
+  INDEX `fk_stars_post_idx` (`post_id` ASC),
+  CONSTRAINT `fk_stars_users`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `forus`.`users` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_stars_post`
+  FOREIGN KEY (`post_id`)
+  REFERENCES `forus`.`posts` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
 
