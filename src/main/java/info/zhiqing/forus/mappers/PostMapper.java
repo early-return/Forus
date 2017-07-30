@@ -25,6 +25,9 @@ public interface PostMapper {
             "comment_status=#{commentStatus}, belong_to=#{belongTo} WHERE id=#{id}")
     int update(Post post);
 
+    @Update("UPDATE posts SET belong_to=#{arg1} WHERE belong_to=#{arg0}")
+    int transferSection(long oldId, long newId);
+
     @Select("SELECT * FROM posts WHERE id=#{id}")
     Post getById(long id);
 

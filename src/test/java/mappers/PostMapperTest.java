@@ -45,6 +45,11 @@ public class PostMapperTest {
     }
 
     @Test
+    public void testTransferSection() {
+        postMapper.transferSection(1, 2);
+    }
+
+    @Test
     public void testGetById() {
         Post post = postMapper.getById(2);
         System.out.println(post.getId() + ": " + post.getTitle());
