@@ -1,4 +1,6 @@
-package info.zhiqing.models;
+package info.zhiqing.forus.models;
+
+import java.util.Date;
 
 /**
  * Created by zhiqing on 17-7-30.
@@ -8,9 +10,9 @@ public class Event {
     private long userId;
     private int type;
     private String message;
-    private int relatedId;
+    private long relatedId;
     private int unread;
-    private int happenTime;
+    private Date happenTime;
 
     public long getId() {
         return id;
@@ -44,11 +46,11 @@ public class Event {
         this.message = message;
     }
 
-    public Integer getRelatedId() {
+    public long getRelatedId() {
         return relatedId;
     }
 
-    public void setRelatedId(Integer relatedId) {
+    public void setRelatedId(long relatedId) {
         this.relatedId = relatedId;
     }
 
@@ -60,11 +62,11 @@ public class Event {
         this.unread = unread;
     }
 
-    public int getHappenTime() {
+    public Date getHappenTime() {
         return happenTime;
     }
 
-    public void setHappenTime(int happenTime) {
+    public void setHappenTime(Date happenTime) {
         this.happenTime = happenTime;
     }
 }

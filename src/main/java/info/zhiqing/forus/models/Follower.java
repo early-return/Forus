@@ -1,4 +1,6 @@
-package info.zhiqing.models;
+package info.zhiqing.forus.models;
+
+import java.util.Date;
 
 /**
  * Created by zhiqing on 17-7-30.
@@ -6,7 +8,7 @@ package info.zhiqing.models;
 public class Follower {
     private long userId;
     private long followerId;
-    private int followTime;
+    private Date followTime;
 
     public long getUserId() {
         return userId;
@@ -24,11 +26,11 @@ public class Follower {
         this.followerId = followerId;
     }
 
-    public int getFollowTime() {
+    public Date getFollowTime() {
         return followTime;
     }
 
-    public void setFollowTime(int followTime) {
+    public void setFollowTime(Date followTime) {
         this.followTime = followTime;
     }
 }

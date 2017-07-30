@@ -1,4 +1,6 @@
-package info.zhiqing.models;
+package info.zhiqing.forus.models;
+
+import java.util.Date;
 
 /**
  * Created by zhiqing on 17-7-30.
@@ -9,7 +11,7 @@ public class User {
     private String nickname;
     private String password;
     private String email;
-    private int joinTime;
+    private Date joinTime;
     private int status;
     private String avatar;
     private String bio;
@@ -55,11 +57,11 @@ public class User {
         this.email = email;
     }
 
-    public int getJoinTime() {
+    public Date getJoinTime() {
         return joinTime;
     }
 
-    public void setJoinTime(int joinTime) {
+    public void setJoinTime(Date joinTime) {
         this.joinTime = joinTime;
     }
 

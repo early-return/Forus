@@ -1,4 +1,4 @@
-package info.zhiqing.models;
+package info.zhiqing.forus.models;
 
 /**
  * Created by zhiqing on 17-7-30.

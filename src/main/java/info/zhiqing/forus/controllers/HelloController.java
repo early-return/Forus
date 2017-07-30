@@ -1,4 +1,4 @@
-package info.zhiqing.controllers;
+package info.zhiqing.forus.controllers;
 
 
 

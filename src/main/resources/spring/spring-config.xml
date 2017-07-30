@@ -4,8 +4,11 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="info.zhiqing.controllers" />
-    <context:component-scan base-package="info.zhiqing.api" />
+    <context:component-scan base-package="info.zhiqing.forus.controllers" />
+    <context:component-scan base-package="info.zhiqing.forus.api" />
+    <context:component-scan base-package="info.zhiqing.forus.mappers" />
+
+    <context:property-placeholder location="classpath:app.properties" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="suffix">
@@ -17,6 +20,23 @@
         <property name="defaultEncoding">
             <value>UTF-8</value>
         </property>
+    </bean>
+
+    <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+
+    <bean name="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="typeAliasesPackage" value="info.zhiqing.forus.models" />
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="info.zhiqing.forus.mappers" />
     </bean>
 
 </beans>

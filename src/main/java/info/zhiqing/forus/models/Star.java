@@ -1,4 +1,6 @@
-package info.zhiqing.models;
+package info.zhiqing.forus.models;
+
+import java.util.Date;
 
 /**
  * Created by zhiqing on 17-7-30.
@@ -7,7 +9,7 @@ public class Star {
     private long id;
     private long userId;
     private long postId;
-    private int starTime;
+    private Date starTime;
 
     public long getId() {
         return id;
@@ -33,11 +35,11 @@ public class Star {
         this.postId = postId;
     }
 
-    public int getStarTime() {
+    public Date getStarTime() {
         return starTime;
     }
 
-    public void setStarTime(int starTime) {
+    public void setStarTime(Date starTime) {
         this.starTime = starTime;
     }
 }

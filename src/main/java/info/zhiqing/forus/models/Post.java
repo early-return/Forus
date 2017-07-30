@@ -1,4 +1,6 @@
-package info.zhiqing.models;
+package info.zhiqing.forus.models;
+
+import java.util.Date;
 
 /**
  * Created by zhiqing on 17-7-30.
@@ -9,7 +11,7 @@ public class Post {
     private String title;
     private String content;
     private int viewRole;
-    private int pubTime;
+    private Date pubTime;
     private int commentStatus;
     private long commentCount;
     private long starCount;
@@ -55,11 +57,11 @@ public class Post {
         this.viewRole = viewRole;
     }
 
-    public int getPubTime() {
+    public Date getPubTime() {
         return pubTime;
     }
 
-    public void setPubTime(int pubTime) {
+    public void setPubTime(Date pubTime) {
         this.pubTime = pubTime;
     }
 
