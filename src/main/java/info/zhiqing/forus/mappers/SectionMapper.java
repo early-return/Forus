@@ -26,9 +26,9 @@ public interface SectionMapper {
     int update(Section section);
 
     @Select("SELECT * FROM sections")
-    List<Section> getAll();
+    List<Section> findAll();
 
     @Select("SELECT * FROM sections WHERE id=#{id}")
-    Section getById(long id);
+    Section findById(long id);
 
 }

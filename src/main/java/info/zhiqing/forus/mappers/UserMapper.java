@@ -22,9 +22,9 @@ public interface UserMapper {
     int delete(User user);
 
     @Select("SELECT * FROM users WHERE id=#{id}")
-    User getById(long id);
+    User findById(long id);
 
     @Select("SELECT * FROM users WHERE username=#{username}")
-    User getByUsername(String username);
+    User findByUsername(String username);
 
 }

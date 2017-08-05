@@ -29,11 +29,11 @@ public interface PostMapper {
     int transferSection(long oldId, long newId);
 
     @Select("SELECT * FROM posts WHERE id=#{id}")
-    Post getById(long id);
+    Post findById(long id);
 
     @Select("SELECT * FROM posts WHERE belong_to=#{arg0} LIMIT #{arg1},#{arg2}")
-    List<Post> getBySectionId(long id, int limitStart, int limitNum);
+    List<Post> findBySectionId(long id, int limitStart, int limitNum);
 
     @Select("SELECT * FROM posts WHERE title LIKE CONCAT('%',#{arg0},'%') LIMIT #{arg1}, #{arg2}")
-    List<Post> getByKey(String key, int limitStart, int limitNum);
+    List<Post> findByKey(String key, int limitStart, int limitNum);
 }

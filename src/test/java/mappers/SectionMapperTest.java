@@ -38,7 +38,7 @@ public class SectionMapperTest {
 
     @Test
     public void testGetAll() {
-        List<Section> sections = sectionMapper.getAll();
+        List<Section> sections = sectionMapper.findAll();
         for (Section section: sections) {
             System.out.println(section.getId() + ": " + section.getTitle());
         }
@@ -46,7 +46,7 @@ public class SectionMapperTest {
 
     @Test
     public void testGetById() {
-        Section section = sectionMapper.getById(1);
+        Section section = sectionMapper.findById(1);
         if (section != null) {
             System.out.println(section.getTitle());
         }

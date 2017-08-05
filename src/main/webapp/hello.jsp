@@ -12,6 +12,6 @@
     <title>Title</title>
 </head>
 <body>
-    ${requestScope.message}
+    ${message}
 </body>
 </html>

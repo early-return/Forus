@@ -2,7 +2,6 @@ package mappers;
 
 import info.zhiqing.forus.mappers.PostMapper;
 import info.zhiqing.forus.models.Post;
-import javafx.geometry.Pos;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class PostMapperTest {
 
     @Test
     public void testUpdate() {
-        Post post = postMapper.getBySectionId(1, 0, 100).get(0);
+        Post post = postMapper.findBySectionId(1, 0, 100).get(0);
         post.setTitle("New title");
         System.out.println(post.getId());
         int n = postMapper.update(post);
@@ -51,13 +50,13 @@ public class PostMapperTest {
 
     @Test
     public void testGetById() {
-        Post post = postMapper.getById(2);
+        Post post = postMapper.findById(2);
         System.out.println(post.getId() + ": " + post.getTitle());
     }
 
     @Test
     public void testGetByKey() {
-        List<Post> posts = postMapper.getByKey("New", 0, 100);
+        List<Post> posts = postMapper.findByKey("New", 0, 100);
         System.out.println("找到了" + posts.size() + "条数据！");
     }
 

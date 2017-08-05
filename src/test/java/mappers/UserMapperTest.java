@@ -51,13 +51,13 @@ public class UserMapperTest {
 
     @Test
     public void testGetById() {
-        User user = userMapper.getById(3);
+        User user = userMapper.findById(3);
         System.out.println(user.getUsername());
     }
 
     @Test
     public void testGetByUsername() {
-        User user = userMapper.getByUsername("lizhiqing");
+        User user = userMapper.findByUsername("lizhiqing");
         System.out.println(user.getId());
     }
 
