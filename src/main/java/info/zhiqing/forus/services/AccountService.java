@@ -15,23 +15,26 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class AccountService {
-    public static final int ROLE_GUEST = 0;
-    public static final int ROLE_MEMBER = 1;
-    public static final int ROLE_ADMIN = 2;
-    public static final int ROLE_SUPER = 3;
+    //用户角色常量定义
+    public static final int ROLE_GUEST = 0; //游客
+    public static final int ROLE_MEMBER = 1; //成员
+    public static final int ROLE_ADMIN = 2; //管理员
+    public static final int ROLE_SUPER = 3; //超级管理员
 
-    public static final int STATUS_NORMAL = 0;
-    public static final int STATUS_INACTIVATED = 1;
-    public static final int STATUS_BAN_PUBLISH = 2;
-    public static final int STATUS_BAN_COMMENT = 3;
-    public static final int STATUS_BAN_LOGIN = 4;
+    //账户状态常量定义
+    public static final int STATUS_NORMAL = 0; //正常
+    public static final int STATUS_INACTIVATED = 1; //未激活
+    public static final int STATUS_BAN_PUBLISH = 2; //禁止发帖
+    public static final int STATUS_BAN_COMMENT = 3; //禁止评论
+    public static final int STATUS_BAN_LOGIN = 4; //禁止登录
 
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Autowired
-    AccountUtil accountUtil;
+    private AccountUtil accountUtil;
 
+    //检查用户名是否已存在
     public void checkUsername(String name) throws UsernameExistedException {
         User u = userMapper.findByUsername(name);
         if(u != null) {

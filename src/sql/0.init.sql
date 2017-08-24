@@ -12,6 +12,8 @@ DROP TABLE IF EXISTS `forus`.`users`;
 
 
 -- 创建表
+
+
 -- 用户表
 CREATE TABLE IF NOT EXISTS `forus`.`users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -120,10 +122,10 @@ CREATE TABLE IF NOT EXISTS `forus`.`followers` (
 -- 消息表
 CREATE TABLE IF NOT EXISTS `forus`.`events` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` INT UNSIGNED NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL, -- 事件用户ID，0为所有用户
   `type` TINYINT NOT NULL, -- 消息类型：0：系统消息；1：有人关注我；2：有人@我
   `message` VARCHAR(100) NOT NULL,
-  `related_id` INT UNSIGNED NOT NULL DEFAULT 0,
+  `related_id` INT UNSIGNED NOT NULL DEFAULT 0, -- 事件相关用户，0为没有相关用户
   `unread` TINYINT NOT NULL DEFAULT 1, -- 消息是否已读：0：已读；1：未读
   `happen_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -163,6 +165,19 @@ CREATE TABLE IF NOT EXISTS `forus`.`stars` (
     ON UPDATE NO ACTION)
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;
+
+
+-- 初始化数据
+
+
+-- 添加系统账户
+INSERT INTO `forus`.`users` (`id`, `username`, `nickname`, `password`, `email`, `join_time`, `status`, `avatar`, `bio`, `role`) VALUES ('0', 'system', 'system', 'system', 'system', '2017-01-01 0:0:0', '0', 'system', '', '3');
+UPDATE `forus`.`users` SET `id`='0' WHERE `username`='system';
+
+-- 添加根版块
+INSERT INTO `forus`.`sections` (`id`, `title`, `belong_to`) VALUES ('0', 'root', '0');
+UPDATE `forus`.`sections` SET `id`='0' WHERE `title`='root';
+
 
 
 
