@@ -14,3 +14,4 @@ buildNumber.properties
 #IDEA project file
 .idea/
 *.iml
+/src/main/resources/app-prod.properties

@@ -9,6 +9,10 @@
         <context:property-placeholder location="classpath:app-dev.properties" />
     </beans>
 
+    <beans profile="test">
+        <context:property-placeholder location="classpath:app-test.properties" />
+    </beans>
+
     <beans profile="prod">
         <context:property-placeholder location="classpath:app-prod.properties" />
     </beans>
