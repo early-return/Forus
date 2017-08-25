@@ -1,7 +1,6 @@
-package services;
+package info.zhiqing.forus.services;
 
 import info.zhiqing.forus.models.Event;
-import info.zhiqing.forus.services.EventService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.*;

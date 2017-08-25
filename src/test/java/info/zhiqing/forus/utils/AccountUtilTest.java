@@ -1,6 +1,5 @@
-package utils;
+package info.zhiqing.forus.utils;
 
-import info.zhiqing.forus.utils.AccountUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

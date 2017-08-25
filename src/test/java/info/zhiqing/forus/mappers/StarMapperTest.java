@@ -1,6 +1,5 @@
-package mappers;
+package info.zhiqing.forus.mappers;
 
-import info.zhiqing.forus.mappers.StarMapper;
 import info.zhiqing.forus.models.Post;
 import info.zhiqing.forus.models.Star;
 import org.junit.Test;

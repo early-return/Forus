@@ -1,6 +1,5 @@
-package mappers;
+package info.zhiqing.forus.mappers;
 
-import info.zhiqing.forus.mappers.SectionMapper;
 import info.zhiqing.forus.models.Section;
 import org.junit.Test;
 import org.junit.runner.RunWith;

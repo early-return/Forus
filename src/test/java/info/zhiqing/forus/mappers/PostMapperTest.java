@@ -1,6 +1,5 @@
-package mappers;
+package info.zhiqing.forus.mappers;
 
-import info.zhiqing.forus.mappers.PostMapper;
 import info.zhiqing.forus.models.Post;
 import org.junit.Test;
 import org.junit.runner.RunWith;

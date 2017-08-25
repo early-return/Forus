@@ -1,6 +1,5 @@
-package services;
+package info.zhiqing.forus.services;
 
-import info.zhiqing.forus.services.AccountService;
 import info.zhiqing.forus.models.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,6 +1,5 @@
-package mappers;
+package info.zhiqing.forus.mappers;
 
-import info.zhiqing.forus.mappers.FollowerMapper;
 import info.zhiqing.forus.models.Follower;
 import info.zhiqing.forus.models.User;
 import org.junit.Test;
