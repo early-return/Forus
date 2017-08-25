@@ -1,5 +1,6 @@
 package info.zhiqing.forus.services;
 
+import info.zhiqing.forus.BaseTest;
 import info.zhiqing.forus.models.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,9 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /**
  * Created by zhiqing on 17-7-30.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/spring-config.xml")
-public class AccountServiceTest {
+public class AccountServiceTest extends BaseTest {
     @Autowired
     AccountService accountService;
 

@@ -1,5 +1,6 @@
 package info.zhiqing.forus.mappers;
 
+import info.zhiqing.forus.BaseTest;
 import info.zhiqing.forus.models.Follower;
 import info.zhiqing.forus.models.User;
 import org.junit.Test;
@@ -15,9 +16,7 @@ import static org.junit.Assert.*;
 /**
  * Created by zhiqing on 17-8-24.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/spring-config.xml")
-public class FollowerMapperTest {
+public class FollowerMapperTest extends BaseTest {
 
     @Autowired
     FollowerMapper followerMapper;

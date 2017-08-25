@@ -1,5 +1,6 @@
 package info.zhiqing.forus.services;
 
+import info.zhiqing.forus.BaseTest;
 import info.zhiqing.forus.models.Event;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,9 +14,7 @@ import java.util.List;
 /**
  * Created by zhiqing on 17-8-22.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/spring-config.xml")
-public class EventServiceTest {
+public class EventServiceTest extends BaseTest {
 
     @Autowired
     private EventService eventService;

@@ -1,5 +1,6 @@
 package info.zhiqing.forus.mappers;
 
+import info.zhiqing.forus.BaseTest;
 import info.zhiqing.forus.models.Post;
 import info.zhiqing.forus.models.Star;
 import org.junit.Test;
@@ -15,9 +16,7 @@ import java.util.List;
  * Created by zhiqing on 17-8-24.
  */
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/spring-config.xml")
-public class StarMapperTest {
+public class StarMapperTest extends BaseTest {
 
     @Autowired
     StarMapper starMapper;

@@ -1,5 +1,6 @@
 package info.zhiqing.forus.mappers;
 
+import info.zhiqing.forus.BaseTest;
 import info.zhiqing.forus.models.Post;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,9 +13,7 @@ import java.util.List;
 /**
  * Created by zhiqing on 17-7-30.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/spring-config.xml")
-public class PostMapperTest {
+public class PostMapperTest extends BaseTest {
 
     @Autowired
     PostMapper postMapper;
