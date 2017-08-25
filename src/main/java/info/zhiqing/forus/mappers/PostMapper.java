@@ -34,6 +34,9 @@ public interface PostMapper {
     @Select("SELECT * FROM posts WHERE belong_to=#{arg0} LIMIT #{arg1},#{arg2}")
     List<Post> findBySectionId(long id, int limitStart, int limitNum);
 
+    @Select("SELECT * FROM posts WHERE user_id=#{arg0} LIMIT #{arg1},#{arg2}")
+    List<Post> findByUserId(long id, int limitStart, int limitNum);
+
     @Select("SELECT * FROM posts WHERE title LIKE CONCAT('%',#{arg0},'%') LIMIT #{arg1}, #{arg2}")
-    List<Post> findByKey(String key, int limitStart, int limitNum);
+    List<Post> search(String key, int limitStart, int limitNum);
 }

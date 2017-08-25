@@ -56,7 +56,7 @@ public class PostMapperTest {
 
     @Test
     public void testGetByKey() {
-        List<Post> posts = postMapper.findByKey("New", 0, 100);
+        List<Post> posts = postMapper.search("New", 0, 100);
         System.out.println("找到了" + posts.size() + "条数据！");
     }
 

@@ -6,7 +6,7 @@
 
     <context:component-scan base-package="info.zhiqing.forus" />
 
-    <context:property-placeholder location="classpath:app.properties" />
+    <import resource="spring-props-config.xml" />
 
     <bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="suffix" value=".jsp" />
