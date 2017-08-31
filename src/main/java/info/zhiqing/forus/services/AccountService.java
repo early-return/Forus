@@ -64,4 +64,13 @@ public class AccountService {
 
     }
 
+    public void updatePassword(String username, String password) {
+        String pass = accountUtil.buildPassword(password);
+        userMapper.updatePassword(username, pass);
+    }
+
+    public void updateStatus(String username, int status) {
+        userMapper.updateStatus(username, status);
+    }
+
 }

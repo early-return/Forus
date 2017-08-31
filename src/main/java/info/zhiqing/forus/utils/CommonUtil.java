@@ -10,7 +10,7 @@ import java.security.MessageDigest;
 @Component
 public class CommonUtil {
 
-    public static String getMD5(String str) {
+    public String getMD5(String str) {
         try{
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] bytes = str.getBytes();

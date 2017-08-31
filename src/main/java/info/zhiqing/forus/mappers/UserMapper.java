@@ -18,6 +18,12 @@ public interface UserMapper {
     @Update("UPDATE users SET nickname=#{nickname}, avatar=#{avatar}, bio=#{bio} WHERE id=#{id}")
     int update(User user);
 
+    @Update("UPDATE users SET status=#{arg1} WHERE username=#{arg0}")
+    int updateStatus(String username, int status);
+
+    @Update("UPDATE users SET password=#{arg1} WHERE username=#{arg0}")
+    int updatePassword(String username, String password);
+
     @Delete("DELETE FROM users WHERE id=#{id}")
     int delete(User user);
 
