@@ -22,8 +22,12 @@ public class EventService {
     public static final int HAVE_READ = 0;
     public static final int UNREAD = 1;
 
+    private final EventMapper eventMapper;
+
     @Autowired
-    private EventMapper eventMapper;
+    public EventService(EventMapper eventMapper) {
+        this.eventMapper = eventMapper;
+    }
 
     public List<Event> findByUserId(long id) {
         List<Event> result = eventMapper.findByUserId();

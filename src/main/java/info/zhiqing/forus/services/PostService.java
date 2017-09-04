@@ -14,8 +14,12 @@ import java.util.List;
 @Component
 public class PostService {
 
+    private final PostMapper postMapper;
+
     @Autowired
-    PostMapper postMapper;
+    public PostService(PostMapper postMapper) {
+        this.postMapper = postMapper;
+    }
 
     public void publish(Post post) {
         postMapper.add(post);

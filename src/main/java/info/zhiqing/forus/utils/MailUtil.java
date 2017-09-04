@@ -40,7 +40,7 @@ public class MailUtil {
 
     //如果用户名为空则用户名为邮箱地址
     private String getUsername() {
-        return username != null && !username.equals("") ? username : address;
+        return !username.equals("") ? username : address;
     }
 
     private void send(String to, String subject, String content, String mime) throws MessagingException {

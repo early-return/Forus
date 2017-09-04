@@ -28,11 +28,15 @@ public class AccountService {
     public static final int STATUS_BAN_COMMENT = 3; //禁止评论
     public static final int STATUS_BAN_LOGIN = 4; //禁止登录
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
+
+    private final AccountUtil accountUtil;
 
     @Autowired
-    private AccountUtil accountUtil;
+    public AccountService(UserMapper userMapper, AccountUtil accountUtil) {
+        this.userMapper = userMapper;
+        this.accountUtil = accountUtil;
+    }
 
     //检查用户名是否已存在
     public void checkUsername(String name) throws UsernameExistedException {

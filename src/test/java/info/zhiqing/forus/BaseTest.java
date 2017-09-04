@@ -1,6 +1,8 @@
 package info.zhiqing.forus;
 
+import org.junit.FixMethodOrder;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -11,5 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/spring-config.xml")
 @ActiveProfiles(profiles = "test")
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BaseTest {
 }

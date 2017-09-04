@@ -11,11 +11,15 @@ import sun.print.PSPrinterJob;
 @Component
 public class AccountUtil {
 
-    @Autowired
-    private CommonUtil commonUtil;
+    private final CommonUtil commonUtil;
 
     @Value("${forus.salt}")
     private String PASSWORD_SALT;
+
+    @Autowired
+    public AccountUtil(CommonUtil commonUtil) {
+        this.commonUtil = commonUtil;
+    }
 
     public String randomAvatar() {
         long l = System.currentTimeMillis();
