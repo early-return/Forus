@@ -39,7 +39,6 @@ public class RedisService {
         String token = accountUtil.buildToken(username);
         String key = getKey(username, type);
         int lifecycle = getLifecycle(type);
-        System.out.println(key + ": " + lifecycle);
         jedis.set(key, token);
         jedis.expire(key, lifecycle);
         return token;

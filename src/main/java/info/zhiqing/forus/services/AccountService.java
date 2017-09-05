@@ -31,15 +31,20 @@ public class AccountService {
     private final UserMapper userMapper;
 
     private final AccountUtil accountUtil;
+    private final RedisService redisService;
+    private final MailService mailService;
 
     @Autowired
-    public AccountService(UserMapper userMapper, AccountUtil accountUtil) {
+    public AccountService(UserMapper userMapper, AccountUtil accountUtil,
+                          RedisService redisService, MailService mailService) {
         this.userMapper = userMapper;
         this.accountUtil = accountUtil;
+        this.redisService = redisService;
+        this.mailService = mailService;
     }
 
     //检查用户名是否已存在
-    public void checkUsername(String name) throws UsernameExistedException {
+    private void checkUsername(String name) throws UsernameExistedException {
         User u = userMapper.findByUsername(name);
         if(u != null) {
             throw new UsernameExistedException();
@@ -53,6 +58,9 @@ public class AccountService {
         if(userMapper.add(user) < 1) {
             throw new RegisterFailedException();
         }
+        String token = redisService.updateToken(user.getUsername(), RedisService.TYPE_ACTIVE);
+
+        mailService.sendRegisterMail(user, token);
     }
 
     public void login(User user) throws PasswordErrorException, UserNotFoundException {

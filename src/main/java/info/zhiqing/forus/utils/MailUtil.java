@@ -17,8 +17,8 @@ import java.util.Properties;
 @Component
 public class MailUtil {
 
-    private static final String TYPE_TEXT = "text/plain";
-    private static final String TYPE_HTML = "text/html";
+    private static final String TYPE_TEXT = "text/plain;charset=utf-8";
+    private static final String TYPE_HTML = "text/html;charset=utf-8";
 
     @Value("${mail.host}")
     private String host;

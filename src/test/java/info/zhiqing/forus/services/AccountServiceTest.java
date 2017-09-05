@@ -20,7 +20,7 @@ public class AccountServiceTest extends BaseTest {
         User user = new User();
         user.setUsername("lizhiqing");
         user.setNickname("Nickname");
-        user.setEmail("i@zhiqing.info" + System.currentTimeMillis());
+        user.setEmail("i@zhiqing.info");
         user.setPassword("lizhiqing");
         try {
             accountService.register(user);
