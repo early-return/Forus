@@ -2,7 +2,6 @@ package info.zhiqing.forus.services;
 
 import info.zhiqing.forus.mappers.PostMapper;
 import info.zhiqing.forus.models.Post;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -59,8 +59,8 @@ public class CaptchaUtil {
 
         try {
             ImageIO.write(bi, "JPG", out);
-        } catch (Exception ignored) {
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
