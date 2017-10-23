@@ -1,9 +1,6 @@
 package info.zhiqing.forus.services;
 
-import info.zhiqing.forus.exceptions.PasswordErrorException;
-import info.zhiqing.forus.exceptions.RegisterFailedException;
-import info.zhiqing.forus.exceptions.UserNotFoundException;
-import info.zhiqing.forus.exceptions.UsernameExistedException;
+import info.zhiqing.forus.exceptions.*;
 import info.zhiqing.forus.mappers.UserMapper;
 import info.zhiqing.forus.models.User;
 import info.zhiqing.forus.utils.AccountUtil;
@@ -44,15 +41,23 @@ public class AccountService {
     }
 
     //检查用户名是否已存在
-    private void checkUsername(String name) throws UsernameExistedException {
+    public void checkUsername(String name) throws UsernameExistedException {
         User u = userMapper.findByUsername(name);
         if(u != null) {
             throw new UsernameExistedException();
         }
     }
 
-    public void register(User user) throws UsernameExistedException, RegisterFailedException {
+    public void checkEmail(String email) throws EmailExistedException {
+        User u = userMapper.findByEmail(email);
+        if (u != null) {
+            throw new EmailExistedException();
+        }
+    }
+
+    public void register(User user) throws UsernameExistedException, RegisterFailedException, EmailExistedException {
         checkUsername(user.getUsername());
+        checkEmail(user.getEmail());
         user.setAvatar(accountUtil.randomAvatar());
         user.setPassword(accountUtil.buildPassword(user.getPassword()));
         if(userMapper.add(user) < 1) {
@@ -63,7 +68,7 @@ public class AccountService {
         mailService.sendRegisterMail(user, token);
     }
 
-    public void login(User user) throws PasswordErrorException, UserNotFoundException {
+    public User login(User user) throws PasswordErrorException, UserNotFoundException {
         User u = userMapper.findByUsername(user.getUsername());
         if(u == null || u.getUsername().equals("")) {
             throw new UserNotFoundException();
@@ -73,7 +78,7 @@ public class AccountService {
         if(!password.equals(u.getPassword())) {
             throw new PasswordErrorException();
         }
-
+        return u;
     }
 
     public void updatePassword(String username, String password) {
