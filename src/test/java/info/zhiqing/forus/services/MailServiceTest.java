@@ -17,7 +17,7 @@ public class MailServiceTest extends BaseTest {
     public void testSendRegisterMail() {
         User user = new User();
         user.setNickname("Zhiqing");
-        user.setEmail("lizhiqing1996@gmail.com");
+        user.setEmail("i@zhiqing.info");
 
         mailService.sendRegisterMail(user, "hello");
     }

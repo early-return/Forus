@@ -6,6 +6,6 @@
 </head>
 <body>
 <p><span th:text="${username}"></span>，你好！</p>
-您的激活token：<span th:text="${token}"></span>
+<p>感谢你注册Forus论坛, 请点击<a th:href="${baseurl} + '/account/active/' + ${username} + '/' + ${token}" th:text="${baseurl} + '/account/active/' + ${username} + '/' + ${token}"></a>来激活你的账户！ </p>
 </body>
 </html>

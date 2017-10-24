@@ -14,13 +14,13 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api/account")
-public class AccountController {
+public class AccountApiController {
     public static final String SESSION_LOGGED_USER = "loggedUser";
 
     private final AccountService accountService;
 
     @Autowired
-    public AccountController(AccountService accountService) {
+    public AccountApiController(AccountService accountService) {
         this.accountService = accountService;
     }
 
@@ -67,11 +67,6 @@ public class AccountController {
         user.setUsername(req.getUsername());
         user.setEmail(req.getEmail());
         user.setPassword(req.getPassword());
-
-        System.out.println(user.getNickname());
-        System.out.println(user.getUsername());
-        System.out.println(user.getEmail());
-        System.out.println(user.getPassword());
 
         try {
             accountService.register(user);

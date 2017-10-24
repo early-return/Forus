@@ -90,4 +90,9 @@ public class AccountService {
         userMapper.updateStatus(username, status);
     }
 
+    public void activeUser(String username, String token) throws TokenNotMatchException {
+        redisService.checkToken(username, RedisService.TYPE_ACTIVE, token);
+        updateStatus(username, STATUS_NORMAL);
+    }
+
 }

@@ -3,6 +3,7 @@ package info.zhiqing.forus.services;
 import info.zhiqing.forus.utils.MailUtil;
 import info.zhiqing.forus.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.context.Context;
@@ -26,6 +27,9 @@ public class MailService {
     private final MailUtil mailUtil;
     private final SpringTemplateEngine templateEngine;
 
+    @Value("${forus.baseurl}")
+    private String baseUrl;
+
     @Autowired
     public MailService(MailUtil mailUtil, SpringTemplateEngine templateEngine) {
         this.mailUtil = mailUtil;
@@ -34,8 +38,9 @@ public class MailService {
 
     public void sendRegisterMail(User user, String token) {
         Context context = new Context(LocaleContextHolder.getLocale());
-        context.setVariable("username", user.getNickname());
+        context.setVariable("username", user.getUsername());
         context.setVariable("token", token);
+        context.setVariable("baseurl", baseUrl);
 
         String content = templateEngine.process(MAIL_TEMPLATE_REGISTER, context);
 

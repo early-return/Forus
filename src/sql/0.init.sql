@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `forus`.`users` (
   `password` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `join_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` TINYINT NOT NULL DEFAULT 2,  -- 用户状态： 0：正常；1：未激活；2：禁止发帖；3：禁止评论；4：禁止登录
+  `status` TINYINT NOT NULL DEFAULT 1,  -- 用户状态： 0：正常；1：未激活；2：禁止发帖；3：禁止评论；4：禁止登录
   `avatar` VARCHAR(200) NOT NULL,
   `bio` VARCHAR(250) NULL,  -- 用户简介
   `role` TINYINT NOT NULL DEFAULT 1,  -- 用户角色：0：游客；1：会员；2：管理员；3：超级管理员

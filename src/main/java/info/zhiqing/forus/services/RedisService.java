@@ -47,9 +47,10 @@ public class RedisService {
     public void checkToken(String username, int type, String token) throws TokenNotMatchException {
         String key = getKey(username, type);
         String t = jedis.get(key);
-        if(!token.equals(t)) {
+        if(!token.trim().equals(t.trim())) {
             throw new TokenNotMatchException();
         }
+        jedis.del(key);
     }
 
     private String getKey(String username, int type) {
