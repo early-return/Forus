@@ -2,14 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <context:component-scan base-package="info.zhiqing.forus" />
     <mvc:annotation-driven />
     <mvc:resources mapping="/static/**" location="classpath:/static/" />
 
-    <import resource="spring-props-config.xml" />
+    <bean name="databaseHelper" class="info.zhiqing.forus.utils.DatabaseHelper" init-method="prepareDatabase">
+        <property name="driver" value="${jdbc.driver}" />
+        <property name="host" value="${jdbc.host}" />
+        <property name="port" value="${jdbc.port}" />
+        <property name="schema" value="${jdbc.schema}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+
+    <jdbc:initialize-database>
+        <jdbc:script execution="INIT" location="classpath:sql/0.init.sql"/>
+    </jdbc:initialize-database>
 
     <bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding">
@@ -17,7 +28,7 @@
         </property>
     </bean>
 
-    <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" depends-on="databaseHelper">
         <property name="driverClassName" value="${jdbc.driver}" />
         <property name="url" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
@@ -67,5 +78,20 @@
         <property name="order" value="1" />
         <property name="characterEncoding" value="UTF-8" />
     </bean>
+
+
+
+
+    <beans profile="dev">
+        <context:property-placeholder location="classpath:app.properties,classpath:app-dev.properties" />
+    </beans>
+
+    <beans profile="test">
+        <context:property-placeholder location="classpath:app.properties,classpath:app-test.properties" />
+    </beans>
+
+    <beans profile="prod">
+        <context:property-placeholder location="classpath:app.properties,classpath:app-prod.properties" />
+    </beans>
 
 </beans>

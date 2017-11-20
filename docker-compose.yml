@@ -1,0 +1,25 @@
+version: "2.3"
+services:
+  mysql:
+    image: mysql
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+
+  redis:
+    image: redis:alpine
+    expose:
+      - "6379"
+
+  forus:
+    build: .
+    links:
+      - mysql
+      - redis
+    environment:
+      - spring.profiles.active=test
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
