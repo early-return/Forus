@@ -13,7 +13,7 @@
         <property name="driver" value="${jdbc.driver}" />
         <property name="host" value="${jdbc.host}" />
         <property name="port" value="${jdbc.port}" />
-        <property name="schema" value="${jdbc.schema}" />
+        <property name="name" value="${jdbc.name}" />
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
     </bean>

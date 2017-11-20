@@ -1,7 +1,21 @@
 # Forus
 一个轻量级的论坛程序
 
-## 使用
+## 使用 (Docker方式)
+
+1. 编译打包(需提前安装并配置好Maven)：
+
+打开终端并进入项目根目录，运行 `mvn war:war` 使用Maven编译并打包项目 
+
+2. 构建Docker镜像并运行 (需提前安装并配置好Docker及Docker Compose)：
+
+在终端中进入项目根目录，运行 `docker-compose up` 通过Docker Compose构建镜像和运行相应服务容器
+
+3. 停止
+
+在终端中进入项目根目录，运行 `docker-compose down` 停止服务并删除镜像、容器等 
+
+## 使用 (传统方式)
 
 1. 初始化数据库： 
 
@@ -9,7 +23,7 @@
 
 2. 添加自己的配置文件： 
 
-以 `src/main/resources` 目录下的 `app-dev.properties` 文件为模板，添加 `app-prod.properties` 并修改其中的值。
+以 `src/main/resources` 目录下的 `app.properties` 文件为模板，添加 `app-prod.properties` 并修改其中的值。
 
 3. 打包：
 
@@ -42,12 +56,15 @@
          |——resources           #资源目录
             |——mybatis          #myBatis相关配置
             |——spring           #spring相关配置
-            |——app.properties   #应用配置文件（分为dev、test、prod四类）
+            |——sql              #用于初始化数据库的SQL文件
+            |——app.properties   #应用配置文件（分为默认、dev、test、prod四类）
          |——webapp              #Web应用相关
             |——img              #图片
                |——avatar        #默认头像
             |——WEB-INF          #Web应用配置相关
-   |——sql                       #用于初始化数据库的SQL文件
-   |——test                      #测试用例（子目录结构与main类似）
+   |——test                      #测试用例
+|——pom.xml                      #Maven文件
+|——Dockerfile                   #Tomcat容器文件
+|——docker-compose.yml           #Docker Compose文件 
 ```
 

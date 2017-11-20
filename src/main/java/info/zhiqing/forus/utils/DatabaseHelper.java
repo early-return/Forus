@@ -7,7 +7,7 @@ public class DatabaseHelper {
     private String driver;
     private String host;
     private String port;
-    private String schema;
+    private String name;
     private String username;
     private String password;
 
@@ -35,12 +35,12 @@ public class DatabaseHelper {
         this.port = port;
     }
 
-    public String getSchema() {
-        return schema;
+    public String getName() {
+        return name;
     }
 
-    public void setSchema(String schema) {
-        this.schema = schema;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {
@@ -70,6 +70,6 @@ public class DatabaseHelper {
         dataSource.setUsername(getUsername());
         dataSource.setPassword(getPassword());
         JdbcTemplate jdbc = new JdbcTemplate(dataSource);
-        jdbc.execute("CREATE SCHEMA IF NOT EXISTS `" + getSchema() + "` DEFAULT CHARACTER SET utf8;");
+        jdbc.execute("CREATE SCHEMA IF NOT EXISTS `" + getName() + "` DEFAULT CHARACTER SET utf8;");
     }
 }
