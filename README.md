@@ -5,37 +5,53 @@
 
 1. 编译打包(需提前安装并配置好Maven)：
 
+```
 打开终端并进入项目根目录，运行 `mvn war:war` 使用Maven编译并打包项目 
+```
 
 2. 构建Docker镜像并运行 (需提前安装并配置好Docker及Docker Compose)：
 
+```
 在终端中进入项目根目录，运行 `docker-compose up` 通过Docker Compose构建镜像和运行相应服务容器
+```
 
 3. 停止
 
+```
 在终端中进入项目根目录，运行 `docker-compose down` 停止服务并删除镜像、容器等 
+```
 
 ## 使用 (传统方式)
 
 1. 初始化数据库： 
 
+```
 按顺序执行 `src/sql` 目录下的SQL文件.
+```
 
 2. 添加自己的配置文件： 
 
+```
 以 `src/main/resources` 目录下的 `app.properties` 文件为模板，添加 `app-prod.properties` 并修改其中的值。
+```
 
 3. 打包：
 
+```
 在命令行中输入 `mvn war:war`
+```
 
 4. 激活配置文件：
 
+```
 在Web容器中添加JVM参数： `-Dspring.profiles.active="prod"`
+```
 
 5. 运行：
 
+```
 在 `target/` 目录中找到 `forus.war` 文件并发布到Web容器中。
+```
 
 ## 目录结构
 
