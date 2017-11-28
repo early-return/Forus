@@ -3,9 +3,9 @@ services:
   mysql:
     image: mysql
     expose:
-      - "3306"
+      - "3306"                      # Mysql 服务端口
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=123456  # Mysql root 用户密码
 
   redis:
     image: redis:alpine
@@ -18,8 +18,12 @@ services:
       - mysql
       - redis
     environment:
-      - spring.profiles.active=test
+      - spring.profiles.active=test # 激活 Spring 的 Profile
+      - JPDA_ADDRESS=0.0.0.0:8000   # 远程调试地址
+    volumes:
+      - ./target/forus/:/usr/local/tomcat/webapps/forus/
     expose:
       - "8080"
     ports:
-      - "8080:8080"
+      - "8080:8080"   # 应用端口映射
+      - "8000:8000"   # 远程调试端口映射

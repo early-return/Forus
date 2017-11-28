@@ -120,7 +120,7 @@
                        resourceName="UserDatabase"/>
             </Realm>
 
-            <Host name="localhost"  appBase="forus"
+            <Host name="localhost"  appBase="webapps"
                   unpackWARs="true" autoDeploy="false">
 
                 <!-- SingleSignOn valve, share authentication between web applications
@@ -133,7 +133,7 @@
                      Documentation at: /docs/config/valve.html
                      Note: The pattern used is equivalent to using pattern="common" -->
 
-                <Context path="" docBase="/usr/local/tomcat/webapps/forus.war" reloadable="true" />
+                <Context path="" docBase="forus" reloadable="true" />
 
                 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                        prefix="localhost_access_log" suffix=".txt"

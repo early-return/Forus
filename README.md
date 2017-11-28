@@ -80,6 +80,8 @@
                |——avatar        #默认头像
             |——WEB-INF          #Web应用配置相关
    |——test                      #测试用例
+|——config                       #配置文件
+   |——server.xml                #Tomcat配置文件
 |——pom.xml                      #Maven文件
 |——Dockerfile                   #Tomcat容器文件
 |——docker-compose.yml           #Docker Compose文件 
